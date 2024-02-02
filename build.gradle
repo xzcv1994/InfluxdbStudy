@@ -15,6 +15,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     implementation group: 'org.influxdb', name: 'influxdb-java', version: '2.21'
     implementation group: 'com.influxdb', name: 'influxdb-client-java', version: '6.7.0'
+    implementation 'org.apache.kafka:kafka-clients:3.2.0'
 }
 
 test {
@@ -23,6 +24,9 @@ test {
 
 jar {
     manifest {
-        attributes 'Main-Class' : 'v2.basic.crud.CrudApp.Class'
+        attributes 'Main-Class' : 'v2.basic.crud.CrudApp'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }

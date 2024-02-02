@@ -62,7 +62,7 @@ public class CrudApp {
 
         //4. insert, select 주기 실행
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(2);
-        executorService.scheduleAtFixedRate(insertThread, 0, 2, TimeUnit.SECONDS);
+        executorService.scheduleAtFixedRate(insertThread, 0, 6, TimeUnit.SECONDS);
         executorService.scheduleAtFixedRate(selectThread, 0, 3, TimeUnit.SECONDS);
     }
 }
